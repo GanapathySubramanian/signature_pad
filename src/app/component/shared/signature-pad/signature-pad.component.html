@@ -1,0 +1,19 @@
+<h4>Please Add your signature here</h4>
+<canvas
+  #canvas
+  (touchstart)="startDrawing($event)"
+  (touchmove)="moved($event)"
+  width="700"
+  height="200"
+></canvas>
+<p class="error-message" *ngIf="signatureNeeded">Signature is required</p>
+
+<div class="buttons flex justify-between">
+  <button (click)="clearPad()">Clear</button>
+  <button (click)="savePad()">Submit the signature</button>
+</div>
+
+<div *ngIf="signatureNeeded === false">
+  <p>Signature in Base64Encoded Format</p>
+  <img src="{{ signatureImg }}" alt="" srcset="" />
+</div>
